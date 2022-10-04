@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         binding.ssPullRefresh.setRefreshView(WaveAnimation(this))
         binding.ssPullRefresh.setRefreshStyle(SSPullToRefreshLayout.RefreshStyle.FLOAT)
         binding.ssPullRefresh.setRefreshViewParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,300))
+        //binding.ssPullRefresh.setRefreshTargetOffset(0f)
+       // binding.ssPullRefresh.setRefreshInitialOffset(0f)
         binding.ssPullRefresh.setOnRefreshListener(object : SSPullToRefreshLayout.OnRefreshListener {
             override fun onRefresh() {
                 // This is demo code to perform

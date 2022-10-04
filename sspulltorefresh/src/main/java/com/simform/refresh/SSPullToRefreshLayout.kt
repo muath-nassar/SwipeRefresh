@@ -62,7 +62,7 @@ class SSPullToRefreshLayout(context: Context?, attrs: AttributeSet? = null) :
     private val mRefreshViewSize: Int
 
     // Whether the client has set a custom refreshing position
-    private var mUsingCustomRefreshTargetOffset = false
+    var mUsingCustomRefreshTargetOffset = true
 
     // Whether the client has set a custom starting position
     private var mUsingCustomRefreshInitialOffset = false
@@ -95,6 +95,8 @@ class SSPullToRefreshLayout(context: Context?, attrs: AttributeSet? = null) :
 
         // init mDragDistanceConverter
         mDragDistanceConverter = SSDragDistanceConverter()
+        //setRefreshInitialOffset(0f)
+        //setRefreshTargetOffset(170f)
     }
 
     private var mOnRefreshListener: OnRefreshListener? = null
@@ -108,9 +110,9 @@ class SSPullToRefreshLayout(context: Context?, attrs: AttributeSet? = null) :
         override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
             when (mRefreshStyle) {
                 RefreshStyle.FLOAT -> {
-                    val refreshTargetOffset = mRefreshTargetOffset + mRefreshInitialOffset
+                    //val refreshTargetOffset = mRefreshTargetOffset + mRefreshInitialOffset
                     animateToTargetOffset(
-                        refreshTargetOffset,
+                        0f,
                         mRefreshView.top.toFloat(),
                         interpolatedTime
                     )
@@ -339,7 +341,7 @@ class SSPullToRefreshLayout(context: Context?, attrs: AttributeSet? = null) :
     /**
      * @param refreshTargetOffset The minimum distance that trigger refresh.
      */
-    fun setRefreshTargetOffset(refreshTargetOffset: Float) {
+    fun setRefreshTargetOffset(refreshTargetOffset: Float) {//very important
         mRefreshTargetOffset = refreshTargetOffset
         mUsingCustomRefreshTargetOffset = true
         requestLayout()
@@ -348,7 +350,7 @@ class SSPullToRefreshLayout(context: Context?, attrs: AttributeSet? = null) :
     /**
      * @param refreshInitialOffset the top position of the [.mRefreshView] relative to its parent.
      */
-    fun setRefreshInitialOffset(refreshInitialOffset: Float) {
+    fun setRefreshInitialOffset(refreshInitialOffset: Float) {//very important
         mRefreshInitialOffset = refreshInitialOffset
         mUsingCustomRefreshInitialOffset = true
         requestLayout()

@@ -8,7 +8,7 @@ import androidx.core.graphics.xor
 import com.simform.refresh.SSAnimationView
 
 class WaveAnimation(context: Context) : SSAnimationView(context) {
-    private var amplitude = 4f.toDp() // scale
+    private var amplitude = 3f.toDp() // scale
     private var speed = 0f
     private val pathWave = Path()
     private var pathBackground = Path()
@@ -21,7 +21,7 @@ class WaveAnimation(context: Context) : SSAnimationView(context) {
 
     override fun onDraw(c: Canvas) {
         createBackground()
-        createRoundCutInBackground()
+        //createRoundCutInBackground()
         //pathBackground = pathBackground.minus(cutBackgroundPath)
         pathBackground = pathBackground.minus(pathWave)
         c.drawPath(pathBackground, backgroundPaint)
@@ -41,16 +41,16 @@ class WaveAnimation(context: Context) : SSAnimationView(context) {
     }
 
     private fun createBackground() {
-
+        val x = height.toFloat()/3.2f
         pathBackground.reset()
         pathBackground.fillType = Path.FillType.EVEN_ODD
         backgroundPaint.color = Color.CYAN//parseColor("#203354")
         pathBackground.moveTo(0f, 0f)
         pathBackground.lineTo(width.toFloat(),0f)
-        pathBackground.lineTo(width.toFloat(),height.toFloat()-70)
-        pathBackground.lineTo(0f,height.toFloat()-70)
+        pathBackground.lineTo(width.toFloat(),height.toFloat()-x)
+        pathBackground.lineTo(0f,height.toFloat()-x)
         //pathBackground.lineTo(0f,0f)//in case of rectangle
-        pathBackground.arcTo(RectF(0f,height.toFloat()-140,width.toFloat(),height.toFloat()),0f,180f)
+        pathBackground.arcTo(RectF(0f,height.toFloat()-x*2,width.toFloat(),height.toFloat()),0f,180f)
         pathBackground.close()
 
     }
@@ -72,7 +72,8 @@ class WaveAnimation(context: Context) : SSAnimationView(context) {
 
     private fun showTitle(c: Canvas) {
         textPath.reset()
-        textPath = pathBackground
+        textPath = Path()
+        textPath.addRect(0f,0f,width.toFloat(),height.toFloat()/2,Path.Direction.CW)
         textPaint.textSize = 45f
         textPaint.textAlign = Paint.Align.CENTER
         textPaint.color = Color.WHITE
@@ -95,7 +96,7 @@ class WaveAnimation(context: Context) : SSAnimationView(context) {
         while (i < width + 10) {
             val wx = i.toFloat()
             val wy =
-                amplitude * 2 + amplitude * kotlin.math.sin((i + 10) * Math.PI / WAVE_AMOUNT_ON_SCREEN + speed) + 200f
+                amplitude * 2 + amplitude * kotlin.math.sin((i + 10) * Math.PI / WAVE_AMOUNT_ON_SCREEN + speed) + 200
             pathWave.lineTo(wx, wy.toFloat())
             i += 10
         }
