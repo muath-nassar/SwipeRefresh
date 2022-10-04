@@ -3,11 +3,13 @@ package com.muath.swipe2
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
+import android.util.Log
 import androidx.core.graphics.minus
 import androidx.core.graphics.xor
 import com.simform.refresh.SSAnimationView
 
 class WaveAnimation(context: Context) : SSAnimationView(context) {
+    private val TAG = "WaveAnimation"
     private var amplitude = 3f.toDp() // scale
     private var speed = 0f
     private val pathWave = Path()
@@ -78,10 +80,14 @@ class WaveAnimation(context: Context) : SSAnimationView(context) {
         textPaint.textAlign = Paint.Align.CENTER
         textPaint.color = Color.WHITE
         if (animator?.isRunning == true){
+           // c.drawText("updating content", (width / 2).toFloat(), (height / 2).toFloat()-40, textPaint)
             c.drawText("updating content", (width / 2).toFloat(), (height / 2).toFloat()-40, textPaint)
+            Log.d(TAG, "showTitle:case 1 =  $height")
 
         }else{
-            c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat(), textPaint)
+            //c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat()+20, textPaint)
+            Log.d(TAG, "showTitle:case 2 =  $height")
+            c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat()+height/4, textPaint)
 
         }
     }

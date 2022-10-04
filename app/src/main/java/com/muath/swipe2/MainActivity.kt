@@ -1,11 +1,12 @@
 package com.muath.swipe2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.R
+import androidx.appcompat.app.AppCompatActivity
 import com.muath.swipe2.databinding.ActivityMainBinding
 import com.simform.refresh.SSPullToRefreshLayout
 import kotlinx.coroutines.GlobalScope
@@ -30,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         binding.ssPullRefresh.setRepeatCount(SSPullToRefreshLayout.RepeatCount.INFINITE)
         binding.ssPullRefresh.setRefreshView(WaveAnimation(this))
         binding.ssPullRefresh.setRefreshStyle(SSPullToRefreshLayout.RefreshStyle.FLOAT)
-        binding.ssPullRefresh.setRefreshViewParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,300))
+        //binding.ssPullRefresh.setRefreshViewParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,300))
+        setRefreshViewHeight()
         //binding.ssPullRefresh.setRefreshTargetOffset(0f)
        // binding.ssPullRefresh.setRefreshInitialOffset(0f)
         binding.ssPullRefresh.setOnRefreshListener(object : SSPullToRefreshLayout.OnRefreshListener {
@@ -46,5 +48,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+    private fun setRefreshViewHeight(){
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val height: Int = displayMetrics.heightPixels
+        binding.ssPullRefresh.setRefreshViewParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height/7))
+
+        //val width: Int = displayMetrics.widthPixels
     }
 }

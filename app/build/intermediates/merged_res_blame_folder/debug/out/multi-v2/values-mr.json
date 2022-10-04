@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.muath.swipe2.app-mergeDebugResources-30:/values-mr/values-mr.xml",
+            "outputFile": "com.muath.swipe2.app-mergeDebugResources-29:/values-mr/values-mr.xml",
             "map": [
                 {
                     "source": "/Users/muathnassar/.gradle/caches/transforms-3/6ea5e02244b74fe2f2bc6384d218f2ff/transformed/material-1.6.1/res/values-mr/values-mr.xml",
