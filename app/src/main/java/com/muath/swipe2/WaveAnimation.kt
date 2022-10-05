@@ -46,7 +46,7 @@ class WaveAnimation(context: Context) : SSAnimationView(context) {
         val x = height.toFloat()/3.2f
         pathBackground.reset()
         pathBackground.fillType = Path.FillType.EVEN_ODD
-        backgroundPaint.color = Color.CYAN//parseColor("#203354")
+        backgroundPaint.color = Color.BLACK//parseColor("#203354")
         pathBackground.moveTo(0f, 0f)
         pathBackground.lineTo(width.toFloat(),0f)
         pathBackground.lineTo(width.toFloat(),height.toFloat()-x)
@@ -87,7 +87,7 @@ class WaveAnimation(context: Context) : SSAnimationView(context) {
         }else{
             //c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat()+20, textPaint)
             Log.d(TAG, "showTitle:case 2 =  $height")
-            c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat()+height/4+20, textPaint)
+            c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat()+height/4, textPaint)
 
         }
     }

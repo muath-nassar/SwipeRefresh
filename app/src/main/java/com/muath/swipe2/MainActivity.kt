@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val height: Int = displayMetrics.heightPixels
-        binding.ssPullRefresh.setRefreshViewParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height/7))
+        binding.ssPullRefresh.setRefreshViewParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height/6))
 
         //val width: Int = displayMetrics.widthPixels
     }
