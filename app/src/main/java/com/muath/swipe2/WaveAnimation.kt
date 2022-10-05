@@ -76,18 +76,18 @@ class WaveAnimation(context: Context) : SSAnimationView(context) {
         textPath.reset()
         textPath = Path()
         textPath.addRect(0f,0f,width.toFloat(),height.toFloat()/2,Path.Direction.CW)
-        textPaint.textSize = 45f
+        textPaint.textSize = 35f
         textPaint.textAlign = Paint.Align.CENTER
         textPaint.color = Color.WHITE
         if (animator?.isRunning == true){
            // c.drawText("updating content", (width / 2).toFloat(), (height / 2).toFloat()-40, textPaint)
-            c.drawText("updating content", (width / 2).toFloat(), (height / 2).toFloat()-40, textPaint)
+            c.drawText("updating content", (width / 2).toFloat(), (height / 2).toFloat()-10, textPaint)
             Log.d(TAG, "showTitle:case 1 =  $height")
 
         }else{
             //c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat()+20, textPaint)
             Log.d(TAG, "showTitle:case 2 =  $height")
-            c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat()+height/4, textPaint)
+            c.drawText("scroll down to update", (width / 2).toFloat(), (height / 2).toFloat()+height/4+20, textPaint)
 
         }
     }
